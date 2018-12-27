@@ -1,0 +1,62 @@
+
+.bg {
+  height: 76.4vh;
+  width: 100vw;
+  color: white;
+  background: url(../../../assets/images/bj2.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+.loginTitle {
+  width:100%;
+  font-size:60px;
+  color:#fff;
+  text-align:center;
+  font-weight:700;
+}
+#userNameDiv,#passWordDiv {
+  width:500px;
+  margin:0px auto;
+  font-size:28px;
+  color:#000;
+  line-height:58px;
+  margin-top:6%;
+}
+#userName,#passWord {
+  box-sizing:border-box;
+  width:394px;
+  height:58px;
+  border:2px solid #fff;
+  border-radius:6px;
+  box-shadow: 3px 3px 3px #000;
+  outline:none;
+  background:rgba(255,255,255,0.3);
+  color:#000;
+  font-size:20px;
+  padding-left:5px;
+}
+#passWordDiv {
+  margin-top:40px;
+}
+#submitBtnDiv {
+  width:300px;
+  margin:0px auto;
+  margin-top:34px;
+}
+#submitBtn {
+  box-sizing:border-box;
+  width:120px;
+  height:50px;
+  line-height:50px;
+  border:2px solid #fff;
+  border-radius:6px;
+  box-shadow: 3px 3px 3px #000;
+  outline:none;
+  background:#063715;
+  color:#fff;
+  font-size:28px;
+  text-align:center;
+  cursor:pointer;
+}
+#submitBtn:active {
+  background:#d29d4a;
+}

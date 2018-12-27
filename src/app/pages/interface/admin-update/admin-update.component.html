@@ -1,0 +1,76 @@
+<div class="divClass">
+  <h3 style="text-align:center;">用户信息界面</h3>
+  <button pButton type="button" (click)="count()" label="返回" class="ui-button-success buttonClass"></button>
+  <p-dataTable #dt class="tableClass" exportFilename="用户表" [metaKeySelection]="false" [value]="data" [(selection)]="selectedCars"
+    [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    [responsive]="true">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <button type="button" pButton icon="fa-file-o" iconPos="left" label="导出所有" (click)="dt.exportCSV()" style="float:left"></button>
+        <button type="button" pButton icon="fa-file" iconPos="left" label="导出部分" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+      </div>
+    </p-header>
+    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+    <p-column field="id" header="id" [style]="{'width':'10%'}"></p-column>
+    <p-column field="name" header="name" [style]="{'width':'22.5%'}"></p-column>
+    <p-column field="tel" header="tel" [style]="{'width':'22.5%'}"></p-column>
+    <p-column field="email" header="email" [style]="{'width':'22.5%'}"></p-column>
+    <p-column field="studentID" header="studentID" [style]="{'width':'22.5%'}"></p-column>
+    <p-footer>
+      <div class="ui-helper-clearfix" style="width:100%">
+        <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+      </div>
+    </p-footer>
+  </p-dataTable>
+  <p-dialog header="操作" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+      <div class="ui-grid-row" [ngClass]="{'B': addUser}">
+        <div class="ui-grid-col-4">
+          <label for="id">id</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="id" [(ngModel)]="car.id" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="name">name</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input  pInputText id="name" [(ngModel)]="car.name" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="tel">tel</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input  pInputText id="tel" [(ngModel)]="car.tel" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="email">email</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input  pInputText id="email" [(ngModel)]="car.email" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="studentID">studentID</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input  pInputText id="studentID" [(ngModel)]="car.studentID" />
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix messageButton">
+        <button type="button" pButton icon="fa-check" [ngClass]="{'B': addUser}" (click)="refushPwd()" label="重置密码"></button>
+        <button type="button" pButton icon="fa-close" [ngClass]="{'B': addUser}" (click)="delete()" label="删除用户"></button>
+        <button type="button" pButton class="ui-button-info" [ngClass]="{'B': !addUser}" (click)="addUsers()" label="添加用户"></button>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

@@ -1,0 +1,94 @@
+<div class="divClass">
+  <h3 style="text-align:center;">上传资源库界面</h3>
+  <button pButton type="button" (click)="count()" label="返回" class="ui-button-success buttonClass"></button>
+  <p-dataTable #dt class="tableClass" exportFilename="评论表" [metaKeySelection]="false" [value]="data" [(selection)]="selectedCars"
+    [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    [responsive]="true">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <button type="button" pButton icon="fa-file-o" iconPos="left" label="导出数据" (click)="dt.exportCSV()" style="float:left"></button>
+        <button type="button" pButton icon="fa-file" iconPos="left" label="导出部分" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+      </div>
+    </p-header>
+    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+    <p-column field="iditems" header="iditems" [style]="{'width':'10%'}"></p-column>
+    <p-column field="username" header="username"></p-column>
+    <p-column field="imgname" header="imgname"></p-column>
+    <p-column field="itemsname" header="itemsname"></p-column>
+    <p-column field="itemsintroduction" header="itemsintroduction"></p-column>
+    <p-column field="itemsdowntime" header="itemsdowntime"></p-column>
+    <p-column field="speciesname" header="speciesname"></p-column>
+    <!-- <p-footer>
+      <div class="ui-helper-clearfix" style="width:100%">
+        <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+      </div>
+    </p-footer> -->
+  </p-dataTable>
+  <p-dialog header="操作" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+      <div class="ui-grid-row" [ngClass]="{'B': addUser}">
+        <div class="ui-grid-col-4">
+          <label for="iditems">iditems</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="iditems" [(ngModel)]="car.iditems" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="username">username</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="username" [(ngModel)]="car.username" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="imgname">imgname</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="imgname" [(ngModel)]="car.imgname" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="itemsname">itemsname</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="itemsname" [(ngModel)]="car.itemsname" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="itemsintroduction">itemsintroduction</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="itemsintroduction" [(ngModel)]="car.itemsintroduction" />
+        </div>
+      </div>
+      <div class="ui-grid-row" [ngClass]="{'B': addUser}">
+        <div class="ui-grid-col-4">
+          <label for="itemsdowntime">itemsdowntime</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="itemsdowntime" [(ngModel)]="car.itemsdowntime" />
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4">
+          <label for="speciesname">speciesname</label>
+        </div>
+        <div class="ui-grid-col-8">
+          <input readonly="true" pInputText id="speciesname" [(ngModel)]="car.speciesname" />
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix messageButton" style="display: flex;margin-left: 22%;">
+        <button type="button" pButton icon="fa-close" [ngClass]="{'B': addUser}" (click)="delete()" label="不通过"></button>
+        <button type="button" pButton icon="fa-check" [ngClass]="{'B': addUser}" (click)="updateItems()" label="通过"></button>
+        <!-- <button type="button" pButton class="ui-button-info" [ngClass]="{'B': !addUser}" (click)="addComments()" label="上传资源"></button> -->
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

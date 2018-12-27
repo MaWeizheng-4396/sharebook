@@ -1,0 +1,13 @@
+<div class="bg">
+  <h3 style="text-align: center;padding-top: 6%;">校内共享资源APP管理员登录页</h3>
+  <div class="loginTitle"></div>
+  <div id="userNameDiv">账号 ：
+    <input id="userName" type="text" [(ngModel)]="name" placeholder="请输入账号">
+  </div>
+  <div id="passWordDiv">密码 ：
+    <input id="passWord" type="password" [(ngModel)]="pwd" placeholder="请输入密码">
+  </div>
+  <div id="submitBtnDiv" style="text-align: center;">
+    <button id="submitBtn" type="btn" (click)="submitThis()">登 录</button>
+  </div>
+</div>
